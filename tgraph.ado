@@ -170,8 +170,8 @@ forv i=1/`vars' {
     }
     else {
         qui replace beta = -1*diff_`i' in `i'
-        qui replace ci_ub = beta[`i'] - ste[`i'] * invt(`N' - 2, 0.975) in `i'
-        qui replace ci_lb = beta[`i'] - ste[`i'] * invt(`N' - 2, 0.025) in `i'
+        qui replace ci_ub = beta[`i'] - ste[`i'] * invt(`N' - 2, `ci'/100 + (100 - `ci')/2 ) in `i'
+        qui replace ci_lb = beta[`i'] - ste[`i'] * invt(`N' - 2, (100 - `ci')/2) in `i'
     }
 }
 
