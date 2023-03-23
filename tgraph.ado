@@ -165,13 +165,13 @@ forv i=1/`vars' {
 
     if length("`reverse'") != 0 {
         qui replace beta = diff_`i' in `i'
-        qui replace ci_ub = beta[`i'] + ste[`i'] * invt(`N' - 2, `ci'/100 + (100 - `ci')/2 ) in `i'
-        qui replace ci_lb = beta[`i'] + ste[`i'] * invt(`N' - 2, (100 - `ci')/2) in `i'
+        qui replace ci_ub = beta[`i'] + ste[`i'] * invt(`N' - 2, `ci'/100 + (100 - `ci')/200) in `i'
+        qui replace ci_lb = beta[`i'] + ste[`i'] * invt(`N' - 2, (100 - `ci')/200) in `i'
     }
     else {
         qui replace beta = -1*diff_`i' in `i'
-        qui replace ci_ub = beta[`i'] - ste[`i'] * invt(`N' - 2, `ci'/100 + (100 - `ci')/2 ) in `i'
-        qui replace ci_lb = beta[`i'] - ste[`i'] * invt(`N' - 2, (100 - `ci')/2) in `i'
+        qui replace ci_ub = beta[`i'] - ste[`i'] * invt(`N' - 2, `ci'/100 + (100 - `ci')/200) in `i'
+        qui replace ci_lb = beta[`i'] - ste[`i'] * invt(`N' - 2, (100 - `ci')/200) in `i'
     }
 }
 
