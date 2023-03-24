@@ -60,5 +60,5 @@ Output:
 
 ![gr_sample](https://user-images.githubusercontent.com/71022390/227477700-3136dbf9-b0ca-4f4d-afcb-1012354e1bec.png)
 ##
-This is a beta version. Please report bugs in the Issue section.
+This is a beta version. Please report bugs in the Issues section.
 For any other information, contact me by e-mail: cicciadiego99@gmail.com
