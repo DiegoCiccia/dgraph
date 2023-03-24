@@ -23,12 +23,12 @@ syntax varlist(min=1) [if] [in], by(string)
   ]
 ```
 ## Baseline Options
-+ varlist: (required) numeric outcome variables.
++ varlist: (required) outcome variables. Only numeric variables can be included in varlist.
 + by():    (required) dummy variable defining two estimation groups. It can be numeric or string, but it must take only two distinct values.
-+ label:   variable labels are used in place of variable names.
-+ long:    confidence intervals are stacked horizontally (starting from the left side);. By default, confidence intervals are stacked vertically (starting from the bottom).
-+ reverse: point estimates show average y(1) - y(0). As in the Stata ttest command, by default y(0) - y(1) is shown.
-+ echo: prints in the Stata console a table with the numeric values of the average difference between groups and upper/lower bounds for the estimate for each of the variables in varlist.
++ label:   use variable labels in place of variable names.
++ long:    stack confidence intervals horizontally (starting from the left side);. By default, confidence intervals are stacked vertically (starting from the bottom).
++ reverse: shown point estimates as the average y(1) - y(0). As in the Stata ttest command, by default y(0) - y(1) is shown.
++ echo: print in the Stata console a table with the numeric values of the average difference between groups and upper/lower bounds for the estimate for each of the variables in varlist.
 + ci():    level of confidence. By default, ci(95) is specified.
 ## Graph Options
 + title(), subtitle(): specify title and subtitle of the graph. By default, no title nor subtitle.
