@@ -59,6 +59,6 @@ tgraph var_*, by(D) long labangle(45) label scheme(white_tableau) title("Graph")
 Output:
 
 ![gr_sample](https://user-images.githubusercontent.com/71022390/227477700-3136dbf9-b0ca-4f4d-afcb-1012354e1bec.png)
-## Alia
+##
 This is a beta version. Please report bugs in the Issue section.
 For any other information, contact me by e-mail: cicciadiego99@gmail.com
