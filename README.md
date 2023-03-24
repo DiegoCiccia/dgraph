@@ -5,7 +5,7 @@ This package generates a stacked coefficient plot for two-tailed t-tests. It is 
 
 To install the package, copy and paste the following line in your Stata prompt: 
 ```s
-net install tgraph, from("https://raw.githubusercontent.com/DiegoCiccia/dgraph/main") replace
+net install dgraph, from("https://raw.githubusercontent.com/DiegoCiccia/dgraph/main") replace
 ```
 
 ## Syntax 
