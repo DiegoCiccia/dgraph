@@ -44,7 +44,7 @@ syntax varlist(min=1) [if] [in], by(string)
 ```s
 clear
 set seed 0
-set obs 2000000
+set obs 20000
 forv i = 1/30 {
     gen var_`i' = rnormal()
     label var var_`i' "Dep Var `i'"
@@ -52,9 +52,10 @@ forv i = 1/30 {
 gen D = runiform() > 0.5
 tostring D, replace
 ```
-In the previous block of code, a dataset of 2 millions of observations with 30 random variables (from a normal distribution) is generated. The group variable (D) is drawn from a random uniform distribution and indicates values above 0.5. To showcase that the command works for any by() variable as long as only two values are in its support, the variable D is reformatted as a string.
+The previous block of code generates a dataset of 20,000 observations with 30 random variables (from a normal distribution). The group variable (D) is drawn from a random uniform distribution and indicates values above 0.5. To showcase that the command works for any by() variable as long as only two values are in its support, the variable D is reformatted as a string.
 ```s
 tgraph var_*, by(D) long labangle(45) label scheme(white_tableau) title("Graph") reverse mc(blue) lw(0.2) ci(90) labsize(vsmall) saving(gr_sample) replace
 ```
 Output:
-![gr_sample](https://user-images.githubusercontent.com/71022390/227474946-55ce6c42-5a3e-4217-bb62-4561730eb8b1.png)
+
+![gr_sample](https://user-images.githubusercontent.com/71022390/227477700-3136dbf9-b0ca-4f4d-afcb-1012354e1bec.png)
