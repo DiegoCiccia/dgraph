@@ -8,7 +8,7 @@ To install the package, copy and paste the following line in your Stata prompt:
 net install tgraph, from("https://raw.githubusercontent.com/DiegoCiccia/tgraph/main") replace
 ```
 
-# Syntax 
+## Syntax 
 ```s
 syntax varlist(min=1) [if] [in], by(string)  
   [ 
@@ -22,7 +22,7 @@ syntax varlist(min=1) [if] [in], by(string)
     saving(string) replace
   ]
 ```
-## Baseline Options
+### Baseline Options
 + varlist: (required) outcome variables. Only numeric variables can be included in varlist.
 + by():    (required) dummy variable defining two estimation groups. It can be numeric or string, but it must take only two distinct values.
 + label:   use variable labels in place of variable names.
@@ -30,7 +30,7 @@ syntax varlist(min=1) [if] [in], by(string)
 + reverse: shown point estimates as the average y(1) - y(0). As in the Stata ttest command, by default y(0) - y(1) is shown.
 + echo: print in the Stata console a table with the numeric values of the average difference between groups and upper/lower bounds for the estimate for each of the variables in varlist.
 + ci():    level of confidence. By default, ci(95) is specified.
-## Graph Options
+### Graph Options
 + title(), subtitle(): specify title and subtitle of the graph. By default, no title nor subtitle.
 + lc(), lw(), lp(): change the color, width and patters of the lines in confidence intervals.
 + mc(), ms(): change color and size of scatter points for point estimates and upper/lower bounds.
@@ -40,7 +40,7 @@ syntax varlist(min=1) [if] [in], by(string)
 + ysize(), xsize(): change the axes sizes.
 + saving(): save the graph as a .gph file.
 + replace: replaces previous savings.
-# Example
+## Example
 ```s
 clear
 set seed 0
@@ -59,6 +59,6 @@ tgraph var_*, by(D) long labangle(45) label scheme(white_tableau) title("Graph")
 Output:
 
 ![gr_sample](https://user-images.githubusercontent.com/71022390/227477700-3136dbf9-b0ca-4f4d-afcb-1012354e1bec.png)
-# Alia
+## Alia
 This is a beta version. Please report bugs in the Issue section.
 For any other information, contact me by e-mail: cicciadiego99@gmail.com
