@@ -1,4 +1,4 @@
-# tgraph
+# dgraph
 A Stata Package for t-test graphs 
 
 This package generates a stacked coefficient plot for two-tailed t-tests. It is very useful to showcase, through a very simple line of code, a graphical representation of covariates imbalance between groups. 
