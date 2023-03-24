@@ -60,3 +60,4 @@ tgraph var_*, by(D) long labangle(45) label scheme(white_tableau) title("Graph")
 
  
 ![gr_sample](https://user-images.githubusercontent.com/71022390/227474697-fcc5d5ab-809f-464c-9b99-01aa7d186cae.jpg)
+![gr_sample](https://user-images.githubusercontent.com/71022390/227474946-55ce6c42-5a3e-4217-bb62-4561730eb8b1.png)
