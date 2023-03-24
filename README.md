@@ -8,7 +8,7 @@ To install the package, copy and paste the following line in your Stata prompt:
 net install tgraph, from("https://raw.githubusercontent.com/DiegoCiccia/tgraph/main") replace
 ```
 
-## Syntax 
+# Syntax 
 ```s
 syntax varlist(min=1) [if] [in], by(string)  
   [ label long reverse ci(string) 
@@ -21,6 +21,6 @@ syntax varlist(min=1) [if] [in], by(string)
     saving(string) replace
    ]
 ```
-# Baseline 
+## Baseline 
 + varlist: (required) numeric outcome variables.
 + by(): (required) dummy variable 
