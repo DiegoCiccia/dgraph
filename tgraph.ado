@@ -1,5 +1,5 @@
 cap program drop tgraph
-program tgraph, rclass
+program tgraph, eclass
 version 13.0
 
 #delimit ;
@@ -8,6 +8,7 @@ syntax varlist(min=1) [if] [in], by(string)
         label
         long
         reverse
+        echo
 
         ci(string)
 
@@ -45,7 +46,7 @@ mark `select' `if' `in'
 
 // Default Settings //
 if length("`ci'") == 0 {
-    local ci "95"
+    local ci = 95
 }
 if length("`lc'") == 0 {
     local lc "black"
@@ -71,7 +72,6 @@ if length("`seplp'") == 0 {
 if length("`labangle'") == 0 {
     local labangle "0"
 }
-
 
 // Cleaning //
 
@@ -151,6 +151,7 @@ qui gen beta = .
 qui gen ste = .
 qui gen ci_ub = .
 qui gen ci_lb = .
+matrix define M = J(`vars', 3, .)
 forv i=1/`vars' {
     {
         if length("`label'") == 0 {
@@ -165,14 +166,25 @@ forv i=1/`vars' {
 
     if length("`reverse'") != 0 {
         qui replace beta = diff_`i' in `i'
-        qui replace ci_ub = beta[`i'] + ste[`i'] * invt(`N' - 2, `ci'/100 + (100 - `ci')/200) in `i'
+        qui replace ci_ub = beta[`i'] + ste[`i'] * invt(`N' - 2, `ci'/100 + ((100 - `ci') / 200)) in `i'
         qui replace ci_lb = beta[`i'] + ste[`i'] * invt(`N' - 2, (100 - `ci')/200) in `i'
     }
     else {
         qui replace beta = -1*diff_`i' in `i'
-        qui replace ci_ub = beta[`i'] - ste[`i'] * invt(`N' - 2, `ci'/100 + (100 - `ci')/200) in `i'
-        qui replace ci_lb = beta[`i'] - ste[`i'] * invt(`N' - 2, (100 - `ci')/200) in `i'
+        qui replace ci_ub = beta[`i'] - ste[`i'] * invt(`N' - 2, (100 - `ci')/200) in `i'
+        qui replace ci_lb = beta[`i'] - ste[`i'] * invt(`N' - 2, `ci'/100 + (100 - `ci')/200) in `i'
     }
+
+    matrix M[`i', 1] = beta[`i'] 
+    matrix M[`i', 2] = ci_lb[`i']
+    matrix M[`i', 3] = ci_ub[`i']
+}
+
+
+matrix coln M = Diff Lb Ub
+matrix rown M =  `varlist'
+if length("`echo'") != 0 {
+    matrix list M, format(%9.5fc) title("t-test by `by'")
 }
 
 local p = 1
@@ -184,6 +196,7 @@ foreach v in ci_lb beta ci_ub {
     rename `v' p_`p' 
     local p = `p' + 1
 }
+
 qui reshape long p_, i(name) j(p)
 qui sum id
 local t = `p' - 1
