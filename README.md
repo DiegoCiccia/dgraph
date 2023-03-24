@@ -5,7 +5,7 @@ This package generates a stacked coefficient plot for two-tailed t-tests. It is 
 
 To install the package, copy and paste the following line in your Stata prompt: 
 ```s
-net install tgraph, from("https://raw.githubusercontent.com/DiegoCiccia/tgraph/main") replace
+net install tgraph, from("https://raw.githubusercontent.com/DiegoCiccia/dgraph/main") replace
 ```
 
 ## Syntax 
@@ -54,7 +54,7 @@ tostring D, replace
 ```
 The previous block of code generates a dataset of 20,000 observations with 30 random variables (from a normal distribution). The group variable (D) is drawn from a random uniform distribution and indicates values above 0.5. To showcase that the command works for any by() variable as long as only two values are in its support, the variable D is reformatted as a string.
 ```s
-tgraph var_*, by(D) long labangle(45) label scheme(white_tableau) title("Graph") reverse mc(blue) lw(0.2) ci(90) labsize(vsmall) saving(gr_sample) replace
+dgraph var_*, by(D) long labangle(45) label scheme(white_tableau) title("Graph") reverse mc(blue) lw(0.2) ci(90) labsize(vsmall) saving(gr_sample) replace
 ```
 Output:
 
