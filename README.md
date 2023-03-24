@@ -11,7 +11,7 @@ net install tgraph, from("https://raw.githubusercontent.com/DiegoCiccia/tgraph/m
 # Syntax 
 ```s
 syntax varlist(min=1) [if] [in], by(string)  
-  [ label long reverse ci(string) 
+  [ label long reverse echo ci(string) 
     title(string) subtitle(string) 
     lc(string) lp(string) lw(string) 
     mc(string) msize(string) 
@@ -21,11 +21,22 @@ syntax varlist(min=1) [if] [in], by(string)
     saving(string) replace
    ]
 ```
-## Baseline 
+## Baseline Options
 + varlist: (required) numeric outcome variables.
 + by():    (required) dummy variable defining two estimation groups. It can be numeric or string, but it must take only two distinct values.
 + label:   variable labels are used in place of variable names.
 + long:    confidence intervals are stacked horizontally (starting from the left side);. By default, confidence intervals are stacked vertically (starting from the bottom).
 + reverse: point estimates show average y(1) - y(0). As in the Stata ttest command, by default y(0) - y(1) is shown.
++ echo: prints in the Stata console a table with the numeric values of the average difference between groups and upper/lower bounds for the estimate for each of the variables in varlist.
 + ci():    level of confidence. By default, ci(95) is specified.
+## Graph Options
++ title(), subtitle(): specify title and subtitle of the graph. By default, no title nor subtitle.
++ lc(), lw(), lp(): change the color, width and patters of the lines in confidence intervals.
++ mc(), ms(): change color and size of scatter points for point estimates and upper/lower bounds.
++ seplc(), seplp(), seplw(): change the color, width and pattern of the separation line, by default at 0.
++ labsize(), labangle(): change size and angle orientation of variable labels on the graph.
++ scheme(): change the graph scheme.
++ ysize(), xsize(): change the axes sizes.
++ saving(): save the graph as a .gph file.
++ replace: replaces previous savings.
  
