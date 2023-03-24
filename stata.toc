@@ -3,6 +3,6 @@ d Diego Ciccia
 d cicciadiego99@gmail.com
 d https://github.com/DiegoCiccia/tgraph
 
-d 'tgraph': Stata Graphs for stacked t-tests
+d 'dgraph': Stata Graphs for stacked t-tests
 
-p tgraph
+p dgraph
