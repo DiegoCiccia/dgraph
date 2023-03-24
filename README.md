@@ -55,6 +55,7 @@ tostring D, replace
 In the previous block of code, a dataset of 2 millions of observations with 30 random variables (from a normal distribution) is generated. The group variable (D) is drawn from a random uniform distribution and indicates values above 0.5. To showcase that the command works for any by() variable as long as only two values are in its support, the variable D is reformatted as a string.
 ```s
 tgraph var_*, by(D) long labangle(45) label scheme(white_tableau) title("Graph") reverse mc(blue) lw(0.2) ci(90) labsize(vsmall) saving(gr_sample) replace
-```[gr_sample.pdf](https://github.com/DiegoCiccia/tgraph/files/11060219/gr_sample.pdf)
+```
+[gr_sample.pdf](https://github.com/DiegoCiccia/tgraph/files/11060219/gr_sample.pdf)
 
  
