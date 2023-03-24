@@ -1,5 +1,5 @@
 cap program drop tgraph
-program tgraph, eclass
+program tgraph, rclass
 version 13.0
 
 #delimit ;
