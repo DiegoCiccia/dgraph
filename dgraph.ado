@@ -22,6 +22,9 @@ syntax varlist(min=1) [if] [in], by(string)
         mc(string)
         msize(string)
 
+        sl(string)
+        sw(string)
+
         seplc(string)
         seplp(string)
         seplw(string)
@@ -72,6 +75,13 @@ if length("`seplp'") == 0 {
 if length("`labangle'") == 0 {
     local labangle "0"
 }
+if length("`sl'") == 0 {
+    local sl "0.5"
+}
+if length("`sw'") == 0 {
+    local sw "0.1"
+}
+
 
 // Cleaning //
 
@@ -213,7 +223,27 @@ if length("`long'") == 0 {
         file write graphcmd "line id p_ if id == `j', lc(`lc') lp(`lp') lw(`lw') ||"
     }
     forv i = 1/`t' {
-        file write graphcmd "scatter id p_ if p == `i', mc(`mc') msize(`msize') ||"
+        {
+        if `i' == 2 {
+            file write graphcmd "scatter id p_ if p == `i', mc(`mc') msize(`msize') ||"
+        }
+        else if `i' == 1 {
+            forv j = 1/`vars' {
+                local y = p_[`t' * `j' - 2]
+                local x_lb = `j' - `sl'/2
+                local x_ub = `j' + `sl'/2
+                file write graphcmd "pci `x_lb' `y' `x_ub' `y', lc(`lc') lw(`sw') ||"
+            }
+        }
+        else if `i' == 3 {
+            forv j = 1/`vars' {
+                local y = p_[`t' * `j']
+                local x_lb = `j' - `sl'/2
+                local x_ub = `j' + `sl'/2
+                file write graphcmd "pci `x_lb' `y' `x_ub' `y', lc(`lc') lw(`sw')  ||"
+            }
+        }
+        }
     }
     file write graphcmd ", leg(off) ylabel(" 
     forv i = 1/`vars' {
@@ -229,7 +259,27 @@ else {
         file write graphcmd "line p_ id if id == `j', lc(`lc') lp(`lp') lw(`lw') ||"
     }
     forv i = 1/`t' {
-        file write graphcmd "scatter p_ id if p == `i', mc(`mc') msize(`msize') ||"
+        {
+        if `i' == 2 {
+            file write graphcmd "scatter p_ id if p == `i', mc(`mc') msize(`msize') ||"
+        }
+        else if `i' == 1 {
+            forv j = 1/`vars' {
+                local y = p_[`t' * `j' - 2]
+                local x_lb = `j' - `sl'/2
+                local x_ub = `j' + `sl'/2
+                file write graphcmd "pci `y' `x_lb' `y' `x_ub', lc(`lc') lw(`sw') ||"
+            }
+        }
+        else if `i' == 3 {
+            forv j = 1/`vars' {
+                local y = p_[`t' * `j']
+                local x_lb = `j' - `sl'/2
+                local x_ub = `j' + `sl'/2
+                file write graphcmd "pci `y' `x_lb' `y' `x_ub', lc(`lc') lw(`sw')  ||"
+            }
+        }
+        }
     }
     file write graphcmd ", leg(off) xlabel(" 
     forv i = 1/`vars' {
@@ -269,3 +319,4 @@ file close graphcmd
 qui include "graph.do"
 erase "graph.do"
 end
+
