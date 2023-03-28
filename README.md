@@ -1,5 +1,6 @@
 # dgraph
 A Stata package for t-test graphs 
+v. 1.0.1
 
 This package generates a stacked coefficient plot for two-tailed t-tests. It is very useful for showcasing, through a very simple line of code, a graphical representation of covariates imbalance between groups. 
 
@@ -16,6 +17,7 @@ syntax varlist(min=1) [if] [in], by(string)
     title(string) subtitle(string) 
     lc(string) lp(string) lw(string) 
     mc(string) msize(string) 
+    sl(string) sw(string)
     seplc(string) seplp(string) seplw(string) 
     labsize(string) labangle(string) 
     scheme(string) ysize(string) xsize(string) 
@@ -34,6 +36,7 @@ syntax varlist(min=1) [if] [in], by(string)
 + title(), subtitle(): specify title and subtitle of the graph. By default, no title nor subtitle.
 + lc(), lw(), lp(): change the color, width and patters of the lines in confidence intervals.
 + mc(), ms(): change color and size of scatter points for point estimates and upper/lower bounds.
++ sl(), sw(): change length and width of segments at the edges of confidence intervals.
 + seplc(), seplp(), seplw(): change the color, width and pattern of the separation line, by default at 0.
 + labsize(), labangle(): change size and angle orientation of variable labels on the graph.
 + scheme(): change the graph scheme.
@@ -58,7 +61,8 @@ dgraph var_*, by(D) long labangle(45) label scheme(white_tableau) title("Graph")
 ```
 Output:
 
-![gr_sample](https://user-images.githubusercontent.com/71022390/227477700-3136dbf9-b0ca-4f4d-afcb-1012354e1bec.png)
+![gr_sample](https://user-images.githubusercontent.com/71022390/228183269-29f771bc-2d83-49c5-b356-8f97a110cdcd.png)
+
 ##
 This is a beta version. Please report bugs in the Issues section.
 For any other information, contact me by e-mail: cicciadiego99@gmail.com
