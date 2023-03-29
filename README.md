@@ -14,7 +14,7 @@ net install dgraph, from("https://raw.githubusercontent.com/DiegoCiccia/dgraph/m
 ```s
 syntax varlist(min=1) [if] [in], by(string)  
   [ 
-    label long reverse echo ci(string) 
+    label long reverse echo suppress ci(string) 
     title(string) subtitle(string) 
     lc(string) lp(string) lw(string) 
     mc(string) msize(string) 
@@ -22,7 +22,7 @@ syntax varlist(min=1) [if] [in], by(string)
     seplc(string) seplp(string) seplw(string) 
     labsize(string) labangle(string) 
     scheme(string) ysize(string) xsize(string) 
-    saving(string) replace
+    saving(string) replace tabsaving(string)
   ]
 ```
 ### Baseline Options
@@ -32,6 +32,7 @@ syntax varlist(min=1) [if] [in], by(string)
 + long:    stack confidence intervals horizontally (starting from the left side);. By default, confidence intervals are stacked vertically (starting from the bottom).
 + reverse: shown point estimates as the average y(1) - y(0). As in the Stata ttest command, by default y(0) - y(1) is shown.
 + echo: print in the Stata console a table with the numeric values of the average difference between groups and upper/lower bounds for the estimate for each of the variables in varlist.
++ suppress: (often used in combination with echo and tabsaving) the graph is not produced, while values can be still displayed in console or printed in file.
 + ci():    level of confidence. By default, ci(95) is specified.
 ### Graph Options
 + title(), subtitle(): specify title and subtitle of the graph. By default, no title nor subtitle.
@@ -44,6 +45,7 @@ syntax varlist(min=1) [if] [in], by(string)
 + ysize(), xsize(): change the axes sizes.
 + saving(): save the graph as a .gph file.
 + replace: replaces previous savings.
++ tabsaving(): saves the echo output as a TeX tabular (automatic replace).
 ## Example
 ```s
 clear
@@ -58,12 +60,15 @@ tostring D, replace
 ```
 The previous block of code generates a dataset of 20,000 observations with 30 random variables (from a normal distribution). The group variable (D) is drawn from a random uniform distribution and indicates values above 0.5. To showcase that the command works for any by() variable as long as only two values are in its support, the variable D is reformatted as a string.
 ```s
-dgraph var_*, by(D) long labangle(45) label scheme(white_tableau) title("Graph") reverse mc(blue) lw(0.2) ci(90) labsize(vsmall) saving(gr_sample) replace
+dgraph var_*, by(D) long labangle(45) label scheme(white_tableau) title("Graph") reverse mc(black) msize(1) lw(0.2) ci(90) labsize(vsmall) saving(gr_sample) replace echo tabsaving(table)
 ```
 Output:
-
-![gr_sample](https://user-images.githubusercontent.com/71022390/228183269-29f771bc-2d83-49c5-b356-8f97a110cdcd.png)
-
+- Figure
+![gr_sample](https://user-images.githubusercontent.com/71022390/228617163-07cf7159-4a49-49ed-8505-a345a2c37d16.png)
+- Console
+![tab](https://user-images.githubusercontent.com/71022390/228617279-2f3cc36c-c0ed-465e-95af-1e051232dfe9.png)
+- TeX file
+![tab_tex](https://user-images.githubusercontent.com/71022390/228617471-65612cd4-3498-47fb-bc8b-8c90439bee24.png)
 ##
 This is a beta version. Please report bugs in the Issues section.
 For any other information, contact me by e-mail: cicciadiego99@gmail.com
