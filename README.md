@@ -64,10 +64,15 @@ dgraph var_*, by(D) long labangle(45) label scheme(white_tableau) title("Graph")
 ```
 Output:
 - Figure
+
 ![gr_sample](https://user-images.githubusercontent.com/71022390/228617163-07cf7159-4a49-49ed-8505-a345a2c37d16.png)
+
 - Console
+
 ![tab](https://user-images.githubusercontent.com/71022390/228617279-2f3cc36c-c0ed-465e-95af-1e051232dfe9.png)
+
 - TeX file
+
 ![tab_tex](https://user-images.githubusercontent.com/71022390/228617471-65612cd4-3498-47fb-bc8b-8c90439bee24.png)
 ##
 This is a beta version. Please report bugs in the Issues section.
