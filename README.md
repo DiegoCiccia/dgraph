@@ -1,5 +1,5 @@
 # dgraph
-A Stata package for t-test graphs - Update: tables with significance levels in Stata console and \LaTeX
+A Stata package for t-test graphs - Update: tables with significance levels in Stata console and LaTeX
 
 v. 2.0 
 
