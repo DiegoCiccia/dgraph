@@ -69,11 +69,12 @@ Output:
 
 - Console
 
-![tab](https://user-images.githubusercontent.com/71022390/228617279-2f3cc36c-c0ed-465e-95af-1e051232dfe9.png)
+![tab](https://user-images.githubusercontent.com/71022390/228756990-371dead9-efa5-4ac4-a294-dfc044451cee.png)
 
 - TeX file
 
-![tab_tex](https://user-images.githubusercontent.com/71022390/228617471-65612cd4-3498-47fb-bc8b-8c90439bee24.png)
+![tab_tex](https://user-images.githubusercontent.com/71022390/228757031-75ec33f1-17ba-4c0d-b253-c2be220c9158.png)
+
 ##
 This is a beta version. Please report bugs in the Issues section.
 For any other information, contact me by e-mail: cicciadiego99@gmail.com
