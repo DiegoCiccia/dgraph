@@ -259,6 +259,7 @@ if length("`echo'") != 0 {
         di as text abbrev("`v_name'", `wrow1')  "`sp'{c |}" "`sp_1'" abbrev("`t_1'", `rrow1') "`sp_2'" abbrev("`t_2'", `rrow1') "`sp_3'" abbrev("`t_3'", `rrow1') "`level'"
     }
     di as text "{hline `wrow1'}{c BT}{hline `wrow2'}"
+    di as text "* p < 0.1, ** p < 0.05, *** p < 0.01"
 }
 
 // TeX Table ///////////////////////////////////////////////////////////////////////////////////////
@@ -286,8 +287,8 @@ if length("`tabsaving'") != 0 {
         qui file write texcmd "`v_name' & `t_1' & `t_2' & `t_3'$^{`level'}$ \\ `nl'"
     }
 
-
     qui file write texcmd "\hline\hline `nl'"
+    qui file write texcmd "\multicolumn{4}{l}{$^{*} p < 0.1, ^{**} p < 0.05, ^{***} p < 0.01$}"
     qui file write texcmd "\end{tabular} `nl'"
     file close texcmd
 
