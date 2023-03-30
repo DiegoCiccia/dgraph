@@ -65,7 +65,7 @@ dgraph var_*, by(D) long labangle(45) label scheme(white_tableau) title("Graph")
 Output:
 - Figure
 
-![gr_sample](https://user-images.githubusercontent.com/71022390/228617163-07cf7159-4a49-49ed-8505-a345a2c37d16.png)
+![gr_sample](https://user-images.githubusercontent.com/71022390/228767059-c76d2cce-9512-4bc1-81de-0b7787600d61.png)
 
 - Console
 
