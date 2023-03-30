@@ -84,6 +84,12 @@ if length("`sl'") == 0 {
 if length("`sw'") == 0 {
     local sw "0.1"
 }
+if length("`title'") == 0 {
+    local title ""
+}
+if length("`subtitle'") == 0 {
+    local subtitle " "
+}
 
 
 // Cleaning ////////////////////////////////////////////////////////////////////////////////////////
@@ -264,18 +270,19 @@ if length("`echo'") != 0 {
 
 // TeX Table ///////////////////////////////////////////////////////////////////////////////////////
 if length("`tabsaving'") != 0 {
-    local title = subinstr("`tabsaving'", ".tex", "", .)
+    local ttitle = subinstr("`tabsaving'", ".tex", "", .)
     local nl = char(10)
-    qui capture erase "`title'.tex"
+    local byvar = subinstr("`by'", "_", " ", .)
+    qui capture erase "`ttitle'.tex"
     qui capture file close texcmd
-    qui file open texcmd using "`title'.tex", write replace 
-    qui file write texcmd "\begin{tabular}{rccc} `nl'"
+    qui file open texcmd using "`ttitle'.tex", write replace 
+    qui file write texcmd "\begin{tabular}{lccc} `nl'"
     qui file write texcmd "\hline\hline `nl'"
     if length("`reverse'") != 0 {
-        qui file write texcmd "t test by `by' & Y(1) & Y(0) & $\Delta$ \\ `nl'"
+        qui file write texcmd "t test by `byvar' & Y(1) & Y(0) & $\Delta$ \\ `nl'"
     }
     else {
-        qui file write texcmd "t test by `by' & Y(0) & Y(1) & $\Delta$ \\ `nl'"
+        qui file write texcmd "t test by `byvar' & Y(0) & Y(1) & $\Delta$ \\ `nl'"
     }
     qui file write texcmd "\hline `nl'"
     forv i = 1/`vars' {
