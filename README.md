@@ -5,6 +5,13 @@ v. 2.1
 
 This package generates a stacked coefficient plot for two-tailed t-tests. It is very useful for showcasing, through a very simple line of code, a graphical representation of covariates imbalance between groups. Several dependent variables can be tested in a single run. Results can be stored in a LaTeX table.
 
+On 30th March 2023, dgraph was uploaded to the Statistical Software Components (SSC) archive. Details about the functionalities of this package can be accessed by typing on the Stata prompt (after the installation):
+
+```s
+help dgraph
+```
+
+## Setup
 
 To install the package, copy and paste the following line (install from SSC) in your Stata prompt:
 ```s
