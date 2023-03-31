@@ -13,7 +13,7 @@ help dgraph
 
 ## Setup
 
-To install the package, copy and paste the following line (install from SSC) in your Stata prompt:
+To install the package, copy and paste in your Stata prompt this line (install from SSC):
 ```s
 ssc install dgraph, replace
 ```
