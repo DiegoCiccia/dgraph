@@ -237,7 +237,7 @@ local wrow1 = 25
 local rrow1 = 15
 local wrow2 = `wrow' - `wrow1'
 if length("`echo'") != 0 {
-    local sp = " " * (`wrow1' - strlen("t test by `by'"))
+    local sp = " " * (`wrow1' - strlen(abbrev("t test by `by'", `wrow1')))
     if length("`reverse'") != 0 {
         local t_1 "Y(1)"
         local t_2 "Y(0)"
@@ -256,7 +256,12 @@ if length("`echo'") != 0 {
     di as text "{hline `wrow1'}{c +}{hline `wrow2'}"
     forv i = 1/`vars' {
         local v_name = strtrim(name[`i'])
-        local sp = " " * (`wrow1' - strlen("`v_name'"))
+        if strlen(abbrev("`v_name'", `wrow1')) > `wrow1' {
+            local sp = ""
+        }
+        else {
+            local sp = " " * (`wrow1' - strlen(abbrev("`v_name'", `wrow1')))
+        }
         forv j=1/3 {
             local t_`j': di %9.4f M[`i', `j']
             local sp_`j' = " " * (`rrow1' - strlen(strtrim("`t_`j''")))
