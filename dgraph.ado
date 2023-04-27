@@ -150,12 +150,15 @@ foreach v of local groups {
 
 mata: mata clear
 mata: st_view(X = ., ., "`varlist'")
-mata: st_view(D = ., ., "group")
+mata: st_view(D_all = ., ., "group")
 mata: I = J(rows(X), 1, 1)
-mata: D = D, I 
-
+mata: D_all = D_all, I 
 
 forv i = 1/`vars' {
+    mata  D = D_all
+    mata: select = selectindex(X[.,`i'] :== .)
+    mata: D[select, 1] = J(length(select), 1, .)
+    mata: D[select, 2] = J(length(select), 1, .)
     mata: beta = invsym(cross(D,D)) * cross(D, X[., `i'])
     mata: st_numscalar("diff_`i'", beta[1,1])
 
