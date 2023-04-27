@@ -1,7 +1,7 @@
 # dgraph
 A Stata package for t-test graphs - Update: tables with significance levels in Stata console and LaTeX
 
-v. 2.2 - Minor bugs fixed
+v. 2.3 - Minor bugs fixed
 
 This package generates a stacked coefficient plot for two-tailed t-tests. It is very useful for showcasing, through a very simple line of code, a graphical representation of covariates imbalance between groups. Several dependent variables can be tested in a single run. Results can be stored in a LaTeX table.
 
